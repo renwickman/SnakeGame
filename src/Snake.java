@@ -2,7 +2,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Snake {
-    private ArrayList<Integer> body;
+    private ArrayList<int[]> body;
 
     public String move;
 
@@ -15,11 +15,11 @@ public class Snake {
 //            case k
 //    }
 
-    public ArrayList<Integer> getBody(){
+    public ArrayList<int[]> getBody(){
         return body;
     }
 
-    public void setBody(ArrayList<Integer> body) {
+    public void setBody(ArrayList<int[]> body) {
         this.body = body;
     }
 
