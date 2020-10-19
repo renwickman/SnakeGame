@@ -29,6 +29,7 @@ public class Board {
 
     public Board(){
         board = new String[20][20];
+        snake = new Snake(4,4);
         isDead = false;
         boardGame();
     }
@@ -88,6 +89,7 @@ public class Board {
             return false;
         }
         apple = null;
+//        snake.getBody().add(1, snake);
         // TODO: Add 1 to the snake's length
         return true;
     }
@@ -113,15 +115,16 @@ public class Board {
     void playGame(){
         Scanner input = new Scanner(System.in);
         Random rand = new Random();
-        setSnake(4,4);
+        ;
         addApple(6, 6);
         printArray();
         do {
-//            do{
-//
-//            } while(!appleEaten()) {
-//                addApple(rand.nextInt(10), rand.nextInt(10));
-//            }
+            do{
+                //moving
+
+
+            } while(appleEaten() == false);
+            addApple(rand.nextInt(10), rand.nextInt(10));
         } while (!isDead);
     }
 

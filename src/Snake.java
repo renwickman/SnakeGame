@@ -3,17 +3,15 @@ import java.util.ArrayList;
 
 public class Snake {
     private ArrayList<int[]> body;
-
+    public int x;
+    public int y;
     public String move;
 
-    public Snake() {
-        body = new ArrayList<>();
+    public Snake(int y, int x) {
+        body = new ArrayList<int[]>();
+        body.add(new int[]{y, x});
     }
 
-//    public void move(){
-//        switch()
-//            case k
-//    }
 
     public ArrayList<int[]> getBody(){
         return body;
