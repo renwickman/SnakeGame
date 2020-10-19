@@ -76,8 +76,13 @@ public class Board {
         }
     }
 
-    public boolean appleEaten(int row, int column) {
-        if (apple[0] != row && apple[1] != column) {
+    public boolean appleEaten() {
+        if (snake == null) {
+            System.out.println("No snake");
+            return false;
+        }
+        int[] snakeHead = snake.getBody().get(0);
+        if (apple[0] != snakeHead[0] && apple[1] != snakeHead[1]) {
             return false;
         }
         apple = null;
