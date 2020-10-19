@@ -7,7 +7,7 @@ public class Game {
         boolean isDone = false;
         do {
             Board board = new Board();
-            board.setSnake(4, 4);
+            board.playGame();
             boolean isValid = false;
             do {
                 System.out.println("Try Again?");

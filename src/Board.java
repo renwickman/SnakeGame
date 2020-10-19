@@ -1,6 +1,8 @@
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class Board {
@@ -45,7 +47,7 @@ public class Board {
 
     public void setSnake(int row, int column){
         try{
-            board[row][column] = "4";
+            board[row][column] = "S";
         } catch (ArrayIndexOutOfBoundsException e){
             System.out.println("Snake not added, exceeds bounds of this board");
         }
@@ -107,5 +109,21 @@ public class Board {
         }
 
     }
+
+    void playGame(){
+        Scanner input = new Scanner(System.in);
+        Random rand = new Random();
+        setSnake(4,4);
+        addApple(6, 6);
+        printArray();
+        do {
+//            do{
+//
+//            } while(!appleEaten()) {
+//                addApple(rand.nextInt(10), rand.nextInt(10));
+//            }
+        } while (!isDead);
+    }
+
 
 }
