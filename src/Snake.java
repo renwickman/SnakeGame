@@ -3,8 +3,6 @@ import java.util.ArrayList;
 
 public class Snake {
     private ArrayList<int[]> body;
-    public int x;
-    public int y;
     public String move;
 
     public Snake(int y, int x) {
