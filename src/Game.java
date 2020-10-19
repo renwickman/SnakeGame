@@ -26,6 +26,8 @@ public class Game {
                 }
             } while(!isValid);
         } while(!isDone);
+
+        board.printArray();
     }
 
 }

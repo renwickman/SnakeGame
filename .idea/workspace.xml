@@ -20,7 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ba2bd7d-bbe3-4f39-a177-b828d42c9265" name="Default Changelist" comment="Herman commit">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakeGame/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakeGame/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakeGame/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakeGame/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +114,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Herman commit" />
@@ -123,6 +129,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1603123778542" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1603128242574">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1603128242574" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1603128242573">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1603128242573" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1603128242573">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1603128242573" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1603128242573">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1603128242573" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1603124975608">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
