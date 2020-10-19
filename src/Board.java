@@ -65,13 +65,23 @@ public class Board {
 
     }
 
-    public void addApple(int row, int column){
-        try{
-            board[row][column] = "0";
+    public void addApple(int row, int column) {
+        try {
+            // TODO: Check row and column with snake
+            board[row][column] = "@";
             apple = new int[]{row, column};
-        } catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Apple not added, exceeds bounds of this board");
         }
+    }
+
+    public void appleEaten(int row, int column) {
+        int appleIndex = -1;
+        if (apple[0] != row && apple[1] != column) {
+            throw new IllegalStateException(String.format("Integrity failure: No apple exists at %s, %s", row, column));
+        }
+        apple = null;
+        // TODO: Add 1 to the snake's length
     }
 
     public void keyPressed(KeyEvent e) {
