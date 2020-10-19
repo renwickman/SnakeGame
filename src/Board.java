@@ -1,4 +1,5 @@
 import java.awt.event.KeyEvent;
+import java.lang.reflect.Array;
 
 public class Board {
     private String[][] board;
@@ -51,6 +52,24 @@ public class Board {
                 System.out.print(board[i][j] + "   ");
             }
             System.out.println(" ");
+        }
+    }
+
+    public void setSnake(int row, int column){
+        try{
+            board[row][column] = "4";
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Snake not added, exceeds bounds of this board");
+        }
+
+    }
+
+    public void addApple(int row, int column){
+        try{
+            board[row][column] = "0";
+            apple = new int[]{row, column};
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Apple not added, exceeds bounds of this board");
         }
     }
 
