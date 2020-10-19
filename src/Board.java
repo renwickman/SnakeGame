@@ -30,6 +30,7 @@ public class Board {
     public Board(){
         board = new String[20][20];
         snake = new Snake(4,4);
+        board[4][4] = "S";  // THIS MUST BE DONE WHEN INITIALIZING SNAKE OR SNAKE MUST STORE REFERENCE TO BOARD
         isDead = false;
         boardGame();
     }
@@ -39,20 +40,15 @@ public class Board {
     }
 
     public void printArray() {
-        for (String[] strings : board) {
-            for (int j = 0; j < strings.length; ++j) {
-                System.out.printf("%s  %s", strings[j], j != strings.length - 1 ? "" : "\n");
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; ++j) {
+                int[] snakeHead = snake != null ? snake.getBody().get(0) : new int[]{-1, -1};
+                if (snakeHead[0] == i && snakeHead[1] == j) {
+                    board[i][j] = "S";
+                }
+                System.out.printf("%s  %s", board[i][j], j != board[i].length - 1 ? "" : "\n");
             }
         }
-    }
-
-    public void setSnake(int row, int column){
-        try{
-            board[row][column] = "S";
-        } catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("Snake not added, exceeds bounds of this board");
-        }
-
     }
 
     public boolean addApple(int row, int column) {
@@ -115,7 +111,6 @@ public class Board {
     void playGame(){
         Scanner input = new Scanner(System.in);
         Random rand = new Random();
-        ;
         addApple(6, 6);
         printArray();
         do {
