@@ -6,6 +6,7 @@ public class Board {
     private boolean isDead = false;
     private int appleCount = 0;
     private Snake snake;
+    private int[] apple;
 
     public String[][] getBoard() {
         return board;
