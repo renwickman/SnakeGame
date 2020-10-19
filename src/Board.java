@@ -1,7 +1,10 @@
+import java.awt.event.KeyEvent;
+
 public class Board {
     private String[][] board;
     private boolean isDead = false;
     private int appleCount = 0;
+    private Snake snake;
 
     public String[][] getBoard() {
         return board;
@@ -49,6 +52,24 @@ public class Board {
             }
             System.out.println(" ");
         }
+    }
+
+    public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+
+        if(keyCode == KeyEvent.VK_KP_UP && snake.getMove() != "DOWN"){
+            snake.up();
+        }
+        else if(keyCode == KeyEvent.VK_KP_DOWN && snake.getMove() != "UP"){
+            snake.down();
+        }
+        else if(keyCode == KeyEvent.VK_KP_LEFT && snake.getMove() != "RIGHT"){
+            snake.left();
+        }
+        else if(keyCode == KeyEvent.VK_KP_RIGHT && snake.getMove() != "LEFT"){
+            snake.right();
+        }
+
     }
 
 }
