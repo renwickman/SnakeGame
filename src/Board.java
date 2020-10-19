@@ -4,7 +4,6 @@ import java.lang.reflect.Array;
 public class Board {
     private String[][] board;
     private boolean isDead = false;
-    private int appleCount = 0;
     private Snake snake;
     private int[] apple;
 
@@ -24,35 +23,25 @@ public class Board {
         isDead = dead;
     }
 
-    public int getAppleCount() {
-        return appleCount;
-    }
-
-    public void setAppleCount(int appleCount) {
-        this.appleCount = appleCount;
-    }
-
     public Board(){
         board = new String[20][20];
         isDead = false;
-        appleCount = 0;
         boardGame();
     }
 
-    void boardGame(){
-        for (int i = 0; i < 20; i++){
-            for (int j = 0; j < 20; j++) {
-                board [i] [j] = "*";
+    public void boardGame() {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                board[i][j] = "*";
             }
         }
     }
 
     public void printArray() {
-        for (int i = 0; i < 20; ++i) {
-            for (int j = 0; j < 20; ++j) {
-                System.out.print(board[i][j] + "   ");
+        for (int i = 0; i < board.length; ++i) {
+            for (int j = 0; j < board[i].length; ++j) {
+                System.out.print(String.format("%s  %s", board[i][j], j != board[i].length - 1 ? "" : "\n"));
             }
-            System.out.println(" ");
         }
     }
 
