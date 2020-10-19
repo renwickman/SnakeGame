@@ -1,5 +1,5 @@
 import java.awt.event.KeyEvent;
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Board {
     private String[][] board;
@@ -54,23 +54,37 @@ public class Board {
 
     }
 
-    public void addApple(int row, int column) {
+    public boolean addApple(int row, int column) {
+        if (apple != null) {
+            System.out.println("Cannot add another apple; only one apple can exist");
+            return false;
+        }
+        if (snake != null) {
+            ArrayList<int[]> snakeBody = snake.getBody();
+            for (int[] section : snakeBody) {
+                if (section[0] == row && section[1] == column) {
+                    System.out.println("Cannot add apple to top of snake");
+                    return false;
+                }
+            }
+        }
         try {
-            // TODO: Check row and column with snake
             board[row][column] = "@";
             apple = new int[]{row, column};
+            return true;
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Apple not added, exceeds bounds of this board");
+            System.out.println("Cannot add apple outside of the map");
+            return false;
         }
     }
 
-    public void appleEaten(int row, int column) {
-        int appleIndex = -1;
+    public boolean appleEaten(int row, int column) {
         if (apple[0] != row && apple[1] != column) {
-            throw new IllegalStateException(String.format("Integrity failure: No apple exists at %s, %s", row, column));
+            return false;
         }
         apple = null;
         // TODO: Add 1 to the snake's length
+        return true;
     }
 
     public void keyPressed(KeyEvent e) {
