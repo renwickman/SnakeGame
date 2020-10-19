@@ -4,11 +4,10 @@ public class Game {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        Board board = new Board();
-        board.setSnake(4, 4);
         boolean isDone = false;
         do {
-            board.boardGame();
+            Board board = new Board();
+            board.setSnake(4, 4);
             boolean isValid = false;
             do {
                 System.out.println("Try Again?");
@@ -26,9 +25,9 @@ public class Game {
                         isValid = false;
                 }
             } while(!isValid);
-        } while(!isDone);
 
-        board.printArray();
+            board.printArray();
+        } while(!isDone);
     }
 
 }

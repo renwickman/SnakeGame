@@ -1,5 +1,7 @@
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Board {
     private String[][] board;
@@ -30,17 +32,13 @@ public class Board {
     }
 
     public void boardGame() {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = "*";
-            }
-        }
+        IntStream.range(0, board.length).forEach(i -> Arrays.fill(board[i], "*"));
     }
 
     public void printArray() {
-        for (int i = 0; i < board.length; ++i) {
-            for (int j = 0; j < board[i].length; ++j) {
-                System.out.print(String.format("%s  %s", board[i][j], j != board[i].length - 1 ? "" : "\n"));
+        for (String[] strings : board) {
+            for (int j = 0; j < strings.length; ++j) {
+                System.out.printf("%s  %s", strings[j], j != strings.length - 1 ? "" : "\n");
             }
         }
     }
