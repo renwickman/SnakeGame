@@ -35,11 +35,9 @@ public class Snake {
         this.x = x;
     }
 
-
     public void setY(int y){
         this.y = y;
     }
-
 
     public ArrayList<int[]> getBody(){
         return body;
@@ -48,7 +46,6 @@ public class Snake {
     public void setBody(ArrayList<int[]> body) {
         this.body = body;
     }
-
 
     public String getDirection() {
         return direction;

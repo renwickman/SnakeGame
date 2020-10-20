@@ -109,6 +109,7 @@ public class Board implements KeyListener {
 //        snake.getBody().add(new Array[]);
         //add(1, snake.getBody().)
         // TODO: Add 1 to the snake's length
+        snake.getBody().add(snake.getBody().size()-1, new int[]{snake.getY() + 1, snake.getX() + 1} );
         return true;
     }
 

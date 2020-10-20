@@ -21,7 +21,7 @@ public class Game {
                         isDone = true;
                         break;
                     default:
-                        System.out.println("Not valid, but nice try");
+                        System.out.println("Not a valid response, but nice try though");
                         isValid = false;
                 }
             } while(!isValid);
