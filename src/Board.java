@@ -163,7 +163,6 @@ public class Board extends KeyAdapter {
         do {
             do{
                 // moving
-                System.out.println(System.in.read());
             } while(appleEaten() == false);
             addApple(rand.nextInt(10), rand.nextInt(10));
         } while (!isDead);
