@@ -161,7 +161,6 @@ public class Board implements KeyListener {
         Random rand = new Random();
         addApple(6, 6);
         printArray();
-
         do {
 
             do{
