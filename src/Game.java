@@ -8,11 +8,11 @@ import java.util.Scanner;
 public class Game {
     public static void main(String[] args) throws IOException {
         JFrame window = new JFrame();
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // kills the program when the red 'X' on the top-right is clicked
         window.setLayout(new GridBagLayout());
         window.pack();
-        window.setLocationRelativeTo(null);
         window.setSize(500, 10);
+        window.setLocationRelativeTo(null); // centers the window to the middle of the screen
         window.setVisible(true);
         window.repaint();
 
