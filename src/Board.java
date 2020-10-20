@@ -63,13 +63,13 @@ public class Board extends KeyAdapter {
     void initMove(String dir){
         switch (dir) {
             case "U":
-                snake.getBody().get(0)[0] += 1;
+                snake.getBody().get(0)[0] -= 1;
                 break;
             case "R":
                 snake.getBody().get(0)[1] += 1;
                 break;
             case "D":
-                snake.getBody().get(0)[0] -= 1;
+                snake.getBody().get(0)[0] += 1;
                 break;
             case "L":
                 snake.getBody().get(0)[1] -= 1;
@@ -110,13 +110,11 @@ public class Board extends KeyAdapter {
             return false;
         }
         int[] snakeHead = snake.getBody().get(0);
+
         if (apple[0] != snakeHead[0] && apple[1] != snakeHead[1]) {
             return false;
         }
         apple = null;
-//        snake.getBody().add(new Array[]);
-        //add(1, snake.getBody().)
-        // TODO: Add 1 to the snake's length
         snake.getBody().add(snake.getBody().size()-1, new int[]{snake.getY() + 1, snake.getX() + 1} );
         return true;
     }
@@ -173,3 +171,7 @@ public class Board extends KeyAdapter {
 
 
 }
+
+// snake.getBody().add(new Array[]);
+// add(1, snake.getBody().)
+// TODO: Add 1 to the snake's length
