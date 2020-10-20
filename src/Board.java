@@ -1,5 +1,6 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -119,8 +120,6 @@ public class Board implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        Scanner input = new Scanner(System.in);
-        int keyCode = e.getKeyCode();
         switch (e.getKeyCode()) {
             case KeyEvent.VK_KP_UP:
                 if (snake.getBody().get(0)[0] == 0) {
@@ -156,16 +155,14 @@ public class Board implements KeyListener {
 
     }
 
-    void playGame(){
+    void playGame() throws IOException {
         Random rand = new Random();
         addApple(6, 6);
         printArray();
-
         do {
-
             do{
-                //moving
-
+                // moving
+                System.out.println(System.in.read());
             } while(appleEaten() == false);
             addApple(rand.nextInt(10), rand.nextInt(10));
         } while (!isDead);
