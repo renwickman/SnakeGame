@@ -3,12 +3,44 @@ import java.util.ArrayList;
 
 public class Snake {
     private ArrayList<int[]> body;
+<<<<<<< Updated upstream
     private String move;
     private String direction;
+=======
+    private int x;
+    private int y;
+
+    public String move;
+>>>>>>> Stashed changes
 
     public Snake(int y, int x) {
         body = new ArrayList<int[]>();
         body.add(new int[]{y, x});
+    }
+
+    public void move(){
+
+    }
+
+    public void grow(){
+        
+    }
+
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
+    }
+
+    public void setX(int x){
+        this.x = x;
+    }
+
+
+    public void setY(int y){
+        this.y = y;
     }
 
 
