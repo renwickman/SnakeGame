@@ -6,11 +6,17 @@ public class Snake {
 <<<<<<< Updated upstream
     private String move;
     private String direction;
+<<<<<<< Updated upstream
 =======
     private int x;
     private int y;
 
     public String move;
+>>>>>>> Stashed changes
+=======
+    private int x;
+    private int y;
+
 >>>>>>> Stashed changes
 
     public Snake(int y, int x) {
