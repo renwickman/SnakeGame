@@ -1,12 +1,14 @@
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-public class Board implements KeyListener {
+public class Board extends KeyAdapter {
     private String[][] board;
     private boolean isDead = false;
     private Snake snake;
@@ -26,6 +28,10 @@ public class Board implements KeyListener {
 
     public void setDead(boolean dead) {
         isDead = dead;
+    }
+
+    public Snake getSnake() {
+        return snake;
     }
 
     public Board(){
@@ -51,6 +57,8 @@ public class Board implements KeyListener {
             }
         }
     }
+
+
 
     void initMove(String dir){
         switch (dir) {
@@ -113,59 +121,49 @@ public class Board implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
     public void keyPressed(KeyEvent e) {
-        Scanner input = new Scanner(System.in);
-        int keyCode = e.getKeyCode();
         switch (e.getKeyCode()) {
-            case KeyEvent.VK_KP_UP:
+            case KeyEvent.VK_UP:
                 if (snake.getBody().get(0)[0] == 0) {
                     System.out.println("You can't move up.");
                 } else {
                     initMove("U");
                 }
-            case KeyEvent.VK_KP_LEFT:
+                break;
+            case KeyEvent.VK_LEFT:
                 if (snake.getBody().get(0)[1] == 0) {
                     System.out.println("You can't move left.");
                 } else {
                     initMove( "L");
                 }
-            case KeyEvent.VK_KP_DOWN:
+                break;
+            case KeyEvent.VK_DOWN:
                 if (snake.getBody().get(0)[0] == 19) {
                     System.out.println("You can't move down.");
                 } else {
                     initMove("D");
                 }
-            case KeyEvent.VK_KP_RIGHT:
+                break;
+            case KeyEvent.VK_RIGHT:
                 if (snake.getBody().get(0)[1] == 19) {
                     System.out.println("You can't move right.");
                 } else {
                     initMove("R");
                 }
+                break;
             default:
-                System.out.println("Not a valid input.  Try again.");
+                System.out.println("?");
         }
     }
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
-
-    void playGame(){
+    void playGame() throws IOException {
         Random rand = new Random();
         addApple(6, 6);
         printArray();
-
         do {
-
             do{
-                //moving
-
+                // moving
+                System.out.println(System.in.read());
             } while(appleEaten() == false);
             addApple(rand.nextInt(10), rand.nextInt(10));
         } while (!isDead);
