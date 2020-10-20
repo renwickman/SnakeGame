@@ -21,10 +21,9 @@ public class Game {
         boolean isDone = false;
         do {
             Board board = new Board();
-            KeyboardReader reader = new KeyboardReader();
-            window.addKeyListener(reader);
+            window.addKeyListener(board);
             board.playGame();
-            window.removeKeyListener(reader);
+            window.removeKeyListener(board);
             boolean isValid = false;
             do {
                 System.out.println("Try Again?");
