@@ -124,10 +124,6 @@ public class Board implements KeyListener {
     void playGame(){
         Scanner input = new Scanner(System.in);
         Random rand = new Random();
-<<<<<<< Updated upstream
-=======
-        setSnake(4,4);
->>>>>>> Stashed changes
         addApple(6, 6);
         printArray();
         do {

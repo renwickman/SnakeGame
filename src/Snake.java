@@ -3,21 +3,12 @@ import java.util.ArrayList;
 
 public class Snake {
     private ArrayList<int[]> body;
-<<<<<<< Updated upstream
     private String move;
     private String direction;
-<<<<<<< Updated upstream
-=======
+
     private int x;
     private int y;
 
-    public String move;
->>>>>>> Stashed changes
-=======
-    private int x;
-    private int y;
-
->>>>>>> Stashed changes
 
     public Snake(int y, int x) {
         body = new ArrayList<int[]>();
