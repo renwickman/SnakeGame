@@ -3,7 +3,8 @@ import java.util.ArrayList;
 
 public class Snake {
     private ArrayList<int[]> body;
-    public String move;
+    private String move;
+    private String direction;
 
     public Snake(int y, int x) {
         body = new ArrayList<int[]>();
@@ -19,6 +20,13 @@ public class Snake {
         this.body = body;
     }
 
+    public String getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
 
     public String getMove() {
         return move;
