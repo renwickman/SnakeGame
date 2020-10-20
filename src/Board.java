@@ -162,6 +162,7 @@ public class Board implements KeyListener {
         addApple(6, 6);
         printArray();
         do {
+            System.out.println("ABBfB!!!");
             do{
                 //moving
                 System.out.println("ABBA");
