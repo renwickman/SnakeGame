@@ -49,6 +49,7 @@ public class Snake {
         this.body = body;
     }
 
+
     public String getDirection() {
         return direction;
     }
