@@ -3,11 +3,41 @@ import java.util.ArrayList;
 
 public class Snake {
     private ArrayList<int[]> body;
-    public String move;
+    private String move;
+    private String direction;
+
+    private int x;
+    private int y;
+
 
     public Snake(int y, int x) {
         body = new ArrayList<int[]>();
         body.add(new int[]{y, x});
+    }
+
+    public void move(){
+
+    }
+
+    public void grow(){
+        
+    }
+
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
+    }
+
+    public void setX(int x){
+        this.x = x;
+    }
+
+
+    public void setY(int y){
+        this.y = y;
     }
 
 
@@ -19,6 +49,13 @@ public class Snake {
         this.body = body;
     }
 
+    public String getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
 
     public String getMove() {
         return move;

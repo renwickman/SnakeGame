@@ -1,11 +1,12 @@
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-public class Board {
+public class Board implements KeyListener {
     private String[][] board;
     private boolean isDead = false;
     private Snake snake;
@@ -85,11 +86,18 @@ public class Board {
             return false;
         }
         apple = null;
-//        snake.getBody().add(1, snake);
+//        snake.getBody().add(new Array[]);
+        //add(1, snake.getBody().)
         // TODO: Add 1 to the snake's length
         return true;
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
@@ -105,6 +113,11 @@ public class Board {
         else if(keyCode == KeyEvent.VK_KP_RIGHT && snake.getMove() != "LEFT"){
             snake.right();
         }
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 
