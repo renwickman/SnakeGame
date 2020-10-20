@@ -37,6 +37,7 @@ public class Board extends KeyAdapter {
     public Board(){
         board = new String[20][20];
         snake = new Snake(4,4);
+        board[4][4] = "S";  // THIS MUST BE DONE WHEN INITIALIZING SNAKE OR SNAKE MUST STORE REFERENCE TO BOARD
         isDead = false;
         boardGame();
     }
@@ -46,27 +47,15 @@ public class Board extends KeyAdapter {
     }
 
     public void printArray() {
-        String[][] thisBoard = new String[20][20];
-        for (int i = 0; i < thisBoard.length; i++) {
-            Arrays.fill(thisBoard[i], "*");
-        }
-        if (snake.getBody() != null) {
-            for (int[] snakePart : snake.getBody()) {
-                thisBoard[snakePart[0]][snakePart[1]] = "S";
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; ++j) {
+                int[] snakeHead = snake != null ? snake.getBody().get(0) : new int[]{-1, -1};
+                if (snakeHead[0] == i && snakeHead[1] == j) {
+                    board[i][j] = "S";
+                }
+                System.out.printf("%s  %s", board[i][j], j != board[i].length - 1 ? "" : "\n");
             }
         }
-        if (apple != null) {
-            thisBoard[apple[0]][apple[1]] = "@";
-        }
-        System.out.println("+-----------------------------------------+");
-        for (String[] str : thisBoard) {
-            System.out.print("| ");
-            for (String s : str) {
-                System.out.print(s + " ");
-            }
-            System.out.println("|");
-        }
-        System.out.println("+-----------------------------------------+");
     }
 
 
