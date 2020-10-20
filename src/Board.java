@@ -117,6 +117,7 @@ public class Board extends KeyAdapter {
 //        snake.getBody().add(new Array[]);
         //add(1, snake.getBody().)
         // TODO: Add 1 to the snake's length
+        snake.getBody().add(snake.getBody().size()-1, new int[]{snake.getY() + 1, snake.getX() + 1} );
         return true;
     }
 
@@ -154,6 +155,7 @@ public class Board extends KeyAdapter {
             default:
                 System.out.println("?");
         }
+        printArray();
     }
 
     void playGame() throws IOException {
@@ -162,8 +164,8 @@ public class Board extends KeyAdapter {
         printArray();
         do {
             do{
+
                 // moving
-                System.out.println(System.in.read());
             } while(appleEaten() == false);
             addApple(rand.nextInt(10), rand.nextInt(10));
         } while (!isDead);
