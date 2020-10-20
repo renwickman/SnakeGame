@@ -1,6 +1,7 @@
+import java.util.Scanner;
+
 public class Game {
-<<<<<<< HEAD
-=======
+
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -30,5 +31,4 @@ public class Game {
         } while(!isDone);
     }
 
->>>>>>> main
 }
