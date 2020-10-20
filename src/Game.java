@@ -13,7 +13,6 @@ public class Game {
         window.pack();
         window.setLocationRelativeTo(null);
         window.setSize(500, 10);
-
         window.setVisible(true);
         window.repaint();
 
