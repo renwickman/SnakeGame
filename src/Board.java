@@ -52,24 +52,24 @@ public class Board implements KeyListener {
         }
     }
 
-//    void initMove(String dir){
-//        switch (dir) {
-//            case "U":
-//                snake.getBody[1] += 1;
-//                break;
-//            case "R":
-//                snake.getBody()[0] += 1;
-//                break;
-//            case "D":
-//                snake.getBody()[1] -= 1;
-//                break;
-//            case "L":
-//                snake.getBody()[0] -= 1;
-//                break;
-//            default:
-//                System.out.println("Not happening buddy!");
-//        }
-//    };
+    void initMove(String dir){
+        switch (dir) {
+            case "U":
+                snake.getBody().get(0)[0] += 1;
+                break;
+            case "R":
+                snake.getBody().get(0)[1] += 1;
+                break;
+            case "D":
+                snake.getBody().get(0)[0] -= 1;
+                break;
+            case "L":
+                snake.getBody().get(0)[1] -= 1;
+                break;
+            default:
+                System.out.println("Not happening buddy!");
+        }
+    };
 
 
     public boolean addApple(int row, int column) {
@@ -117,39 +117,39 @@ public class Board implements KeyListener {
 
     }
 
-//    @Override
-//    public void keyPressed(KeyEvent e) {
-//        Scanner input = new Scanner();
-//        int keyCode = e.getKeyCode();
-//        switch (input.keyCode.e()) {
-//            case keyCode == KeyEvent.VK_KP_UP:
-//                if (snake.getPosition()[1] == 2) {
-//                    System.out.println("You can't move up.");
-//                } else {
-//                    initMove(snake, "U");
-//                }
-//            case keyCode == KeyEvent.VK_KP_LEFT:
-//                if (snake.getPosition()[0] == 0) {
-//                    System.out.println("You can't move left.");
-//                } else {
-//                    initMove(snake, "L");
-//                }
-//            case keyCode == KeyEvent.VK_KP_DOWN:
-//                if (snake.getPosition()[1] == 0) {
-//                    System.out.println("You can't move down.");
-//                } else {
-//                    initMove(snake, "D");
-//                }
-//            case keyCode == KeyEvent.VK_KP_RIGHT:
-//                if (snake.getPosition()[0] == 2) {
-//                    System.out.println("You can't move right.");
-//                } else {
-//                    initMove(snake, "R");
-//                }
-//            default:
-//                System.out.println("Not a valid input.  Try again.");
-//        }
-//    }
+    @Override
+    public void keyPressed(KeyEvent e) {
+        Scanner input = new Scanner(System.in);
+        int keyCode = e.getKeyCode();
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_KP_UP:
+                if (snake.getBody().get(0)[0] == 0) {
+                    System.out.println("You can't move up.");
+                } else {
+                    initMove("U");
+                }
+            case KeyEvent.VK_KP_LEFT:
+                if (snake.getBody().get(0)[1] == 0) {
+                    System.out.println("You can't move left.");
+                } else {
+                    initMove( "L");
+                }
+            case KeyEvent.VK_KP_DOWN:
+                if (snake.getBody().get(0)[0] == 19) {
+                    System.out.println("You can't move down.");
+                } else {
+                    initMove("D");
+                }
+            case KeyEvent.VK_KP_RIGHT:
+                if (snake.getBody().get(0)[1] == 19) {
+                    System.out.println("You can't move right.");
+                } else {
+                    initMove("R");
+                }
+            default:
+                System.out.println("Not a valid input.  Try again.");
+        }
+    }
 
     @Override
     public void keyReleased(KeyEvent e) {
@@ -157,15 +157,14 @@ public class Board implements KeyListener {
     }
 
     void playGame(){
-        Scanner input = new Scanner(System.in);
         Random rand = new Random();
         addApple(6, 6);
         printArray();
+
         do {
-            System.out.println("ABBfB!!!");
+
             do{
                 //moving
-                System.out.println("ABBA");
 
             } while(appleEaten() == false);
             addApple(rand.nextInt(10), rand.nextInt(10));
