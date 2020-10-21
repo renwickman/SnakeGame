@@ -61,10 +61,6 @@ public class Board extends KeyAdapter {
         IntStream.range(0, 41).forEach(i -> System.out.printf("%s-%s", i != 0 ? "" : "+", i != 40 ? "" : "+\n"));
     }
 
-    public class Display extends JPanel {
-        private Timer timer;
-
-    }
 
     void initMove(String dir) {
         switch (dir) {
@@ -87,8 +83,9 @@ public class Board extends KeyAdapter {
 
     ;
 
-    public String gameOver(){
-        return "Game Over!";
+    public void gameOver(){
+
+        System.out.println("Game Over");;
     }
 
     public void addApple(int row, int column) {
@@ -120,6 +117,7 @@ public class Board extends KeyAdapter {
         }
         int[] snakeHead = snake.getBody().get(0);
         if (apple[0] == snakeHead[0] && apple[1] == snakeHead[1]) {
+//            snake.getBody().add(new int[]{1, 1});
             snake.getBody().add(new int[]{snakeHead[0] + 1, snakeHead[1] + 1});
             apple = null;
             Random rand = new Random();
@@ -134,6 +132,7 @@ public class Board extends KeyAdapter {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
                 if (snake.getBody().get(0)[0] == 0) {
+                    gameOver();
                     System.out.println("You can't move up.");
                 } else {
                     initMove("U");
@@ -141,6 +140,7 @@ public class Board extends KeyAdapter {
                 break;
             case KeyEvent.VK_LEFT:
                 if (snake.getBody().get(0)[1] == 0) {
+                    gameOver();
                     System.out.println("You can't move left.");
                 } else {
                     initMove("L");
@@ -148,6 +148,7 @@ public class Board extends KeyAdapter {
                 break;
             case KeyEvent.VK_DOWN:
                 if (snake.getBody().get(0)[0] == 19) {
+                    gameOver();
                     System.out.println("You can't move down.");
                 } else {
                     initMove("D");
@@ -155,6 +156,7 @@ public class Board extends KeyAdapter {
                 break;
             case KeyEvent.VK_RIGHT:
                 if (snake.getBody().get(0)[1] == 19) {
+                    gameOver();
                     System.out.println("You can't move right.");
                 } else {
                     initMove("R");
