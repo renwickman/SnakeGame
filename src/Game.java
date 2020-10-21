@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -28,14 +26,20 @@ public class Game extends JPanel {
             window.removeKeyListener(board);
             boolean isValid = false;
             do {
+<<<<<<< HEAD
                 board.gameOver();
                 System.out.println("Try Again?");
                 switch (in.next().toUpperCase()){
                     case "Y":
+=======
+                System.out.print("Try Again (Y/N)? ");
+                switch (in.nextLine().toUpperCase().charAt(0)) {
+                    case 'Y':
+>>>>>>> main
                         isValid = true;
                         isDone = false;
                         break;
-                    case "N":
+                    case 'N':
                         isValid = true;
                         isDone = true;
                         break;
@@ -43,10 +47,8 @@ public class Game extends JPanel {
                         System.out.println("Not a valid response, but nice try though");
                         isValid = false;
                 }
-            } while(!isValid);
-
-            board.printArray();
-        } while(!isDone);
+            } while (!isValid);
+        } while (!isDone);
     }
 
 }
