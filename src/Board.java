@@ -13,9 +13,15 @@ public class Board extends KeyAdapter {
     private Snake snake;
     private int[] apple;
     private int[] dimensions = new int[]{20, 20};
+    private Score score;
+    String[][] thisBoard;
 
     public boolean isDead() {
         return isDead;
+    }
+
+    public String[][] getThisBoard() {
+        return thisBoard;
     }
 
     public void setDead(boolean dead) {
@@ -30,15 +36,19 @@ public class Board extends KeyAdapter {
 //        board = new String[20][20];
         snake = new Snake(4, 4);
         isDead = false;
+        score = new Score(0);
         boardGame();
     }
+
+
 
     public void boardGame() {
 //        IntStream.range(0, board.length).forEach(i -> Arrays.fill(board[i], "*"));
     }
 
     public void printArray() {
-        String[][] thisBoard = new String[20][20];
+        System.out.println("Score: " + score.getScore());
+        thisBoard = new String[20][20];
         for (String[] strings : thisBoard) {
             Arrays.fill(strings, "*");
         }
@@ -121,6 +131,7 @@ public class Board extends KeyAdapter {
             apple = null;
             Random rand = new Random();
             addApple(rand.nextInt(20), rand.nextInt(20));
+            score.setScore(score.getScore() + 1);
             return true;
         }
         return false;
