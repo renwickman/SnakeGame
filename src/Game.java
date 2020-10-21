@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Game extends JPanel {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         JFrame window = new JFrame("Snake Game");
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
@@ -26,22 +26,24 @@ public class Game extends JPanel {
             window.removeKeyListener(board);
             boolean isValid = false;
             do {
-                System.out.print("Try Again (Y/N)? ");
-                switch (in.nextLine().toUpperCase().charAt(0)) {
-                    case 'Y':
+                System.out.println("Try Again?");
+                switch (in.next().toUpperCase()){
+                    case "Y":
                         isValid = true;
                         isDone = false;
                         break;
-                    case 'N':
+                    case "N":
                         isValid = true;
                         isDone = true;
                         break;
                     default:
                         System.out.println("Not a valid response, but nice try though");
                         isValid = false;
+                        break;
                 }
             } while (!isValid);
         } while (!isDone);
+        window.dispose();
     }
 
 }
