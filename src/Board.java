@@ -179,7 +179,7 @@ public class Board extends KeyAdapter {
 
                 // moving
             } while(!isDead);
-            addApple(rand.nextInt(10), rand.nextInt(10));
+            addApple(rand.nextInt(20), rand.nextInt(20));
         } while (!isDead);
     }
 
