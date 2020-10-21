@@ -3,8 +3,7 @@ import java.util.ArrayList;
 
 public class Snake {
     private ArrayList<int[]> body;
-    private String move;
-    private String direction;
+    private char direction;
 
     public Snake(int y, int x) {
         body = new ArrayList<int[]>();
@@ -13,6 +12,7 @@ public class Snake {
     }
 
     public void move(int moveY, int moveX) {
+
         int y = -1;
         int x = -1;
         for (int i = 0; i < body.size(); i++) {
@@ -33,7 +33,7 @@ public class Snake {
     }
 
     public void grow() {
-        
+//        body.add(new int[]{});
     }
 
     public ArrayList<int[]> getBody(){
@@ -42,33 +42,5 @@ public class Snake {
 
     public void setBody(ArrayList<int[]> body) {
         this.body = body;
-    }
-
-    public String getDirection() {
-        return direction;
-    }
-
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
-
-    public String getMove() {
-        return move;
-    }
-
-    public void up(){
-        move = "UP";
-    }
-
-    public void down(){
-        move = "DOWN";
-    }
-
-    public void left(){
-        move = "LEFT";
-    }
-
-    public void right(){
-        move = "RIGHT";
     }
 }
