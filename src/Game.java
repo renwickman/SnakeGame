@@ -1,20 +1,21 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Game {
+public class Game extends JPanel {
     public static void main(String[] args) throws IOException {
-        JFrame window = new JFrame();
+        JFrame window = new JFrame("Snake Game");
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // kills the program when the red 'X' on the top-right is clicked
         window.setLayout(new GridBagLayout());
         window.pack();
-        window.setSize(500, 10);
+        window.setSize(500, 500);
         window.setLocationRelativeTo(null); // centers the window to the middle of the screen
         window.setVisible(true);
         window.repaint();
+
 
         Scanner in = new Scanner(System.in);
         boolean isDone = false;
@@ -36,13 +37,13 @@ public class Game {
                         isDone = true;
                         break;
                     default:
-                        System.out.println("Not valid, but nice try");
+                        System.out.println("Not a valid response, but nice try though");
                         isValid = false;
+                        break;
                 }
-            } while(!isValid);
-
-            board.printArray();
-        } while(!isDone);
+            } while (!isValid);
+        } while (!isDone);
+        window.dispose();
     }
 
 }
