@@ -87,6 +87,10 @@ public class Board extends KeyAdapter {
 
     ;
 
+    public String gameOver(){
+        return "Game Over!";
+    }
+
     public void addApple(int row, int column) {
         if (apple != null) {
             System.out.println("Cannot add another apple; only one apple can exist");
@@ -162,6 +166,8 @@ public class Board extends KeyAdapter {
         appleEaten();
         printArray();
     }
+
+
 
     void playGame() {
         addApple(6, 6);
