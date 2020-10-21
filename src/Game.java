@@ -14,7 +14,6 @@ public class Game extends JPanel {
         window.setSize(500, 500);
         window.setLocationRelativeTo(null); // centers the window to the middle of the screen
         window.setVisible(true);
-        window.setTitle("The Snake Game");
         window.repaint();
 
 
@@ -27,6 +26,7 @@ public class Game extends JPanel {
             window.removeKeyListener(board);
             boolean isValid = false;
             do {
+                board.gameOver();
                 System.out.println("Try Again?");
                 switch (in.next().toUpperCase()){
                     case "Y":
@@ -38,7 +38,7 @@ public class Game extends JPanel {
                         isDone = true;
                         break;
                     default:
-                        System.out.println("Not valid, but nice try");
+                        System.out.println("Not a valid response, but nice try though");
                         isValid = false;
                 }
             } while(!isValid);
