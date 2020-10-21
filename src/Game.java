@@ -16,7 +16,6 @@ public class Game extends JPanel {
         window.setSize(500, 500);
         window.setLocationRelativeTo(null); // centers the window to the middle of the screen
         window.setVisible(true);
-        window.setTitle("The Snake Game");
         window.repaint();
 
 
