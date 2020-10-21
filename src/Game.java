@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Game extends JPanel {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         JFrame window = new JFrame("Snake Game");
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
