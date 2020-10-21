@@ -107,7 +107,7 @@ public class Board extends KeyAdapter {
     public boolean appleEaten() {
         int[] snakeHead = snake.getBody().get(0);
         if (apple[0] == snakeHead[0] && apple[1] == snakeHead[1]) {
-            snake.getBody().add(new int[]{snakeHead[0] + 1, snakeHead[1] + 1});
+            snake.grow();
             apple = null;
             Random rand = new Random();
             addApple(rand.nextInt(20), rand.nextInt(20));
