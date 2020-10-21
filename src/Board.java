@@ -80,10 +80,9 @@ public class Board extends KeyAdapter {
         }
     }
 
-    ;
-
-    public String gameOver(){
-        return "Game Over!";
+    public void gameOver() {
+        isDead = true;
+        System.out.println("Game Over!");
     }
 
     public void addApple(int row, int column) {
@@ -124,7 +123,6 @@ public class Board extends KeyAdapter {
             case KeyEvent.VK_UP:
                 if (snake.getBody().get(0)[0] == 0) {
                     gameOver();
-                    System.out.println("You can't move up.");
                 } else {
                     initMove("U");
                 }
@@ -132,7 +130,6 @@ public class Board extends KeyAdapter {
             case KeyEvent.VK_LEFT:
                 if (snake.getBody().get(0)[1] == 0) {
                     gameOver();
-                    System.out.println("You can't move left.");
                 } else {
                     initMove("L");
                 }
@@ -140,7 +137,6 @@ public class Board extends KeyAdapter {
             case KeyEvent.VK_DOWN:
                 if (snake.getBody().get(0)[0] == 19) {
                     gameOver();
-                    System.out.println("You can't move down.");
                 } else {
                     initMove("D");
                 }
@@ -148,7 +144,6 @@ public class Board extends KeyAdapter {
             case KeyEvent.VK_RIGHT:
                 if (snake.getBody().get(0)[1] == 19) {
                     gameOver();
-                    System.out.println("You can't move right.");
                 } else {
                     initMove("R");
                 }
@@ -156,8 +151,10 @@ public class Board extends KeyAdapter {
             default:
                 System.out.println("?");
         }
-        appleEaten();
-        printArray();
+        if (!isDead) {
+            appleEaten();
+            printArray();
+        }
     }
 
 
@@ -166,7 +163,7 @@ public class Board extends KeyAdapter {
         addApple(6, 6);
         printArray();
         do {
-            // moving
+            System.out.print("");
         } while (!isDead);
     }
 }
