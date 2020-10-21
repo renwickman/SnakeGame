@@ -103,14 +103,10 @@ public class Board implements KeyListener {
         }
         int[] snakeHead = snake.getBody().get(0);
         if (apple[0] != snakeHead[0] && apple[1] != snakeHead[1]) {
-            return false;
+            snake.getBody().add(new int[]{snake.getY() + 1, snake.getX() + 1} );
+            return true;
         }
-        apple = null;
-//        snake.getBody().add(new Array[]);
-        //add(1, snake.getBody().)
-        // TODO: Add 1 to the snake's length
-        snake.getBody().add(snake.getBody().size()-1, new int[]{snake.getY() + 1, snake.getX() + 1} );
-        return true;
+        return false;
     }
 
     @Override
@@ -162,12 +158,10 @@ public class Board implements KeyListener {
         addApple(6, 6);
         printArray();
         do {
-
             do{
                 //moving
-
-            } while(appleEaten() == false);
-            addApple(rand.nextInt(10), rand.nextInt(10));
+            } while(!appleEaten() || !isDead);
+            addApple(rand.nextInt(20), rand.nextInt(20));
         } while (!isDead);
     }
 
