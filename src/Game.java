@@ -28,6 +28,11 @@ public class Game extends JPanel {
             window.removeKeyListener(board);
             boolean isValid = false;
             do {
+<<<<<<< HEAD
+                board.gameOver();
+=======
+                System.out.println(board.gameOver());
+>>>>>>> Anthony
                 System.out.println("Try Again?");
                 switch (in.next().toUpperCase()){
                     case "Y":
@@ -39,7 +44,7 @@ public class Game extends JPanel {
                         isDone = true;
                         break;
                     default:
-                        System.out.println("Not valid, but nice try");
+                        System.out.println("Not a valid response, but nice try though");
                         isValid = false;
                 }
             } while(!isValid);
