@@ -1,18 +1,15 @@
-import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
 public class Board extends KeyAdapter {
-    //    private String[][] board;
     private boolean isDead = false;
-    private Snake snake;
+    private final Snake snake;
     private int[] apple;
-    private int[] dimensions = new int[]{20, 20};
+    private final int[] dimensions = new int[]{20, 20};
     private Score score;
     String[][] thisBoard;
 
@@ -33,22 +30,14 @@ public class Board extends KeyAdapter {
     }
 
     public Board() {
-//        board = new String[20][20];
         snake = new Snake(4, 4);
         isDead = false;
         score = new Score(0);
-        boardGame();
-    }
-
-
-
-    public void boardGame() {
-//        IntStream.range(0, board.length).forEach(i -> Arrays.fill(board[i], "*"));
     }
 
     public void printArray() {
         System.out.println("Score: " + score.getScore());
-        thisBoard = new String[20][20];
+        thisBoard = new String[dimensions[0]][dimensions[1]];
         for (String[] strings : thisBoard) {
             Arrays.fill(strings, "*");
         }
@@ -112,7 +101,6 @@ public class Board extends KeyAdapter {
             }
         }
         try {
-//            board[row][column] = "@";
             apple = new int[]{row, column};
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Cannot add apple outside of the map");
@@ -126,7 +114,6 @@ public class Board extends KeyAdapter {
         }
         int[] snakeHead = snake.getBody().get(0);
         if (apple[0] == snakeHead[0] && apple[1] == snakeHead[1]) {
-//            snake.getBody().add(new int[]{1, 1});
             snake.getBody().add(new int[]{snakeHead[0] + 1, snakeHead[1] + 1});
             apple = null;
             Random rand = new Random();
