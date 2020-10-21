@@ -1,27 +1,20 @@
-import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
 public class Board extends KeyAdapter {
-    //    private String[][] board;
     private boolean isDead = false;
-    private Snake snake;
+    private final Snake snake;
     private int[] apple;
-    private int[] dimensions = new int[]{20, 20};
-    private Score score;
-    String[][] thisBoard;
+    private final int[] dimensions = new int[]{20, 20};
+    private final Score score;
+    private String[][] thisBoard;
 
     public boolean isDead() {
         return isDead;
-    }
-
-    public String[][] getThisBoard() {
-        return thisBoard;
     }
 
     public void setDead(boolean dead) {
@@ -32,23 +25,19 @@ public class Board extends KeyAdapter {
         return snake;
     }
 
+    public String[][] getThisBoard() {
+        return thisBoard;
+    }
+
     public Board() {
-//        board = new String[20][20];
         snake = new Snake(4, 4);
         isDead = false;
         score = new Score(0);
-        boardGame();
-    }
-
-
-
-    public void boardGame() {
-//        IntStream.range(0, board.length).forEach(i -> Arrays.fill(board[i], "*"));
     }
 
     public void printArray() {
         System.out.println("Score: " + score.getScore());
-        thisBoard = new String[20][20];
+        thisBoard = new String[dimensions[0]][dimensions[1]];
         for (String[] strings : thisBoard) {
             Arrays.fill(strings, "*");
         }
@@ -102,17 +91,14 @@ public class Board extends KeyAdapter {
             System.out.println("Cannot add another apple; only one apple can exist");
             return;
         }
-        if (snake != null) {
-            ArrayList<int[]> snakeBody = snake.getBody();
-            for (int[] section : snakeBody) {
-                if (section[0] == row && section[1] == column) {
-                    System.out.println("Cannot add apple to top of snake");
-                    return;
-                }
+        ArrayList<int[]> snakeBody = snake.getBody();
+        for (int[] section : snakeBody) {
+            if (section[0] == row && section[1] == column) {
+                System.out.println("Cannot add apple to top of snake");
+                return;
             }
         }
         try {
-//            board[row][column] = "@";
             apple = new int[]{row, column};
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Cannot add apple outside of the map");
@@ -120,13 +106,8 @@ public class Board extends KeyAdapter {
     }
 
     public boolean appleEaten() {
-        if (snake == null) {
-            System.out.println("No snake");
-            return false;
-        }
         int[] snakeHead = snake.getBody().get(0);
         if (apple[0] == snakeHead[0] && apple[1] == snakeHead[1]) {
-//            snake.getBody().add(new int[]{1, 1});
             snake.getBody().add(new int[]{snakeHead[0] + 1, snakeHead[1] + 1});
             apple = null;
             Random rand = new Random();
