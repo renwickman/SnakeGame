@@ -5,7 +5,6 @@ public class Snake {
     private ArrayList<int[]> body;
     private String move;
     private String direction;
-    private int[] position = new int[getX(x)][];
 
     private int x;
     private int y;
@@ -49,6 +48,7 @@ public class Snake {
     public void setBody(ArrayList<int[]> body) {
         this.body = body;
     }
+
 
     public String getDirection() {
         return direction;
