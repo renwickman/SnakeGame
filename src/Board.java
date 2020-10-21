@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -69,7 +70,10 @@ public class Board extends KeyAdapter {
         System.out.println("+-----------------------------------------+");
     }
 
+    public class Display extends JPanel {
+        private Timer timer;
 
+    }
 
     void initMove(String dir){
         switch (dir) {
@@ -115,19 +119,17 @@ public class Board extends KeyAdapter {
         }
     }
 
-    public boolean appleEaten() {
+    public void appleEaten() {
         if (snake == null) {
             System.out.println("No snake");
-            return false;
         }
         int[] snakeHead = snake.getBody().get(0);
 
-        if (apple[0] != snakeHead[0] && apple[1] != snakeHead[1]) {
-            return false;
+        if (apple[0] == snakeHead[0] && apple[1] == snakeHead[1]) {
+            snake.getBody().add(snake.getBody().size()-1, new int[]{snake.getY() + 1, snake.getX() + 1} );
         }
-        apple = null;
-        snake.getBody().add(snake.getBody().size()-1, new int[]{snake.getY() + 1, snake.getX() + 1} );
-        return true;
+
+
     }
 
     @Override
@@ -168,6 +170,7 @@ public class Board extends KeyAdapter {
     }
 
     void playGame() throws IOException {
+
         Random rand = new Random();
         addApple(6, 6);
         printArray();
@@ -175,11 +178,10 @@ public class Board extends KeyAdapter {
             do{
 
                 // moving
-            } while(appleEaten() == false);
+            } while(!isDead);
             addApple(rand.nextInt(10), rand.nextInt(10));
         } while (!isDead);
     }
-
 
 }
 
