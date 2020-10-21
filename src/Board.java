@@ -85,10 +85,7 @@ public class Board extends KeyAdapter {
 
 
     public void gameOver(){
-
         System.out.println("Game Over");;
-
-
     }
 
     public void addApple(int row, int column) {
