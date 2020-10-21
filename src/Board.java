@@ -11,6 +11,7 @@ public class Board extends KeyAdapter {
     private int[] apple;
     private final int[] dimensions = new int[]{20, 20};
     private final Score score;
+    private String[][] thisBoard;
 
     public boolean isDead() {
         return isDead;
@@ -24,6 +25,10 @@ public class Board extends KeyAdapter {
         return snake;
     }
 
+    public String[][] getThisBoard() {
+        return thisBoard;
+    }
+
     public Board() {
         snake = new Snake(4, 4);
         isDead = false;
@@ -32,7 +37,7 @@ public class Board extends KeyAdapter {
 
     public void printArray() {
         System.out.println("Score: " + score.getScore());
-        String[][] thisBoard = new String[dimensions[0]][dimensions[1]];
+        thisBoard = new String[dimensions[0]][dimensions[1]];
         for (String[] strings : thisBoard) {
             Arrays.fill(strings, "*");
         }
