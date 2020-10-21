@@ -64,16 +64,16 @@ public class Board extends KeyAdapter {
     void initMove(char dir) {
         switch (dir) {
             case 'U':
-                snake.getBody().get(0)[0] -= 1;
+                snake.move(-1, 0);
                 break;
             case 'R':
-                snake.getBody().get(0)[1] += 1;
+                snake.move(0, 1);
                 break;
             case 'D':
-                snake.getBody().get(0)[0] += 1;
+                snake.move(1, 0);
                 break;
             case 'L':
-                snake.getBody().get(0)[1] -= 1;
+                snake.move(0, -1);
                 break;
             default:
                 System.out.println("Not happening buddy!");
