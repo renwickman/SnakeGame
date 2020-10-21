@@ -28,11 +28,7 @@ public class Game extends JPanel {
             window.removeKeyListener(board);
             boolean isValid = false;
             do {
-<<<<<<< HEAD
                 board.gameOver();
-=======
-                System.out.println(board.gameOver());
->>>>>>> Anthony
                 System.out.println("Try Again?");
                 switch (in.next().toUpperCase()){
                     case "Y":
