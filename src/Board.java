@@ -10,7 +10,7 @@ public class Board extends KeyAdapter {
     private final Snake snake;
     private int[] apple;
     private final int[] dimensions = new int[]{20, 20};
-    private Score score;
+    private final Score score;
     String[][] thisBoard;
 
     public boolean isDead() {
@@ -91,13 +91,11 @@ public class Board extends KeyAdapter {
             System.out.println("Cannot add another apple; only one apple can exist");
             return;
         }
-        if (snake != null) {
-            ArrayList<int[]> snakeBody = snake.getBody();
-            for (int[] section : snakeBody) {
-                if (section[0] == row && section[1] == column) {
-                    System.out.println("Cannot add apple to top of snake");
-                    return;
-                }
+        ArrayList<int[]> snakeBody = snake.getBody();
+        for (int[] section : snakeBody) {
+            if (section[0] == row && section[1] == column) {
+                System.out.println("Cannot add apple to top of snake");
+                return;
             }
         }
         try {
@@ -108,10 +106,6 @@ public class Board extends KeyAdapter {
     }
 
     public boolean appleEaten() {
-        if (snake == null) {
-            System.out.println("No snake");
-            return false;
-        }
         int[] snakeHead = snake.getBody().get(0);
         if (apple[0] == snakeHead[0] && apple[1] == snakeHead[1]) {
             snake.getBody().add(new int[]{snakeHead[0] + 1, snakeHead[1] + 1});
