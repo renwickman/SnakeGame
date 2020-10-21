@@ -12,7 +12,7 @@ public class Score {
     }
     //Checks if apple was eaten
     public boolean ateApple(Board board){
-        for (String [] array: board.getBoard()) {
+        for (String [] array: board.getThisBoard()) {
             for (String element: array){
                 if(element.equals("@"))
                     return false;
