@@ -119,17 +119,18 @@ public class Board extends KeyAdapter {
         }
     }
 
-    public void appleEaten() {
+    public boolean appleEaten() {
         if (snake == null) {
             System.out.println("No snake");
+            return false;
         }
         int[] snakeHead = snake.getBody().get(0);
 
         if (apple[0] == snakeHead[0] && apple[1] == snakeHead[1]) {
             snake.getBody().add(snake.getBody().size()-1, new int[]{snake.getY() + 1, snake.getX() + 1} );
+            return true;
         }
-
-
+        return false;
     }
 
     @Override
