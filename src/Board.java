@@ -85,36 +85,31 @@ public class Board extends KeyAdapter {
         System.out.println("Game Over!");
     }
 
-    public void addApple(int row, int column) {
-        if (apple != null) {
-            System.out.println("Cannot add another apple; only one apple can exist");
-            return;
-        }
+    public boolean setApple(int row, int column) {
         ArrayList<int[]> snakeBody = snake.getBody();
         for (int[] section : snakeBody) {
             if (section[0] == row && section[1] == column) {
                 System.out.println("Cannot add apple to top of snake");
-                return;
+                return false;
             }
         }
         try {
             apple = new int[]{row, column};
+            return true;
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Cannot add apple outside of the map");
+            return false;
         }
     }
 
-    public boolean appleEaten() {
+    public void appleEaten() {
         int[] snakeHead = snake.getBody().get(0);
         if (apple[0] == snakeHead[0] && apple[1] == snakeHead[1]) {
             snake.grow();
-            apple = null;
             Random rand = new Random();
-            addApple(rand.nextInt(20), rand.nextInt(20));
+            while (!setApple(rand.nextInt(20), rand.nextInt(20))) {}
             score.setScore(score.getScore() + 1);
-            return true;
         }
-        return false;
     }
 
     @Override
@@ -158,7 +153,7 @@ public class Board extends KeyAdapter {
     }
 
     void playGame() {
-        addApple(6, 6);
+        setApple(6, 6);
         printArray();
         do {
             System.out.print("");
