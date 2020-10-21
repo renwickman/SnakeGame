@@ -28,18 +28,17 @@ public class Game extends JPanel {
             do {
                 System.out.print("Try Again (Y/N)? ");
                 switch (in.nextLine().toUpperCase().charAt(0)) {
-                    case 'Y' -> {
+                    case 'Y':
                         isValid = true;
                         isDone = false;
-                    }
-                    case 'N' -> {
+                        break;
+                    case 'N':
                         isValid = true;
                         isDone = true;
-                    }
-                    default -> {
+                        break;
+                    default:
                         System.out.println("Not a valid response, but nice try though");
                         isValid = false;
-                    }
                 }
             } while (!isValid);
         } while (!isDone);
