@@ -24,27 +24,25 @@ public class Game extends JPanel {
             window.addKeyListener(board);
             board.playGame();
             window.removeKeyListener(board);
-            board = null;
             boolean isValid = false;
             do {
-                System.out.println("Try Again?");
-                switch (in.next().toUpperCase()){
-                    case "Y":
+                System.out.print("Try Again (Y/N)? ");
+                switch (in.nextLine().toUpperCase().charAt(0)) {
+                    case 'Y' -> {
                         isValid = true;
                         isDone = false;
-                        break;
-                    case "N":
+                    }
+                    case 'N' -> {
                         isValid = true;
                         isDone = true;
-                        break;
-                    default:
+                    }
+                    default -> {
                         System.out.println("Not a valid response, but nice try though");
                         isValid = false;
+                    }
                 }
-            } while(!isValid);
-
-            board.printArray();
-        } while(!isDone);
+            } while (!isValid);
+        } while (!isDone);
     }
 
 }

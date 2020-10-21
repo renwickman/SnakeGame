@@ -61,18 +61,18 @@ public class Board extends KeyAdapter {
     }
 
 
-    void initMove(String dir) {
+    void initMove(char dir) {
         switch (dir) {
-            case "U":
+            case 'U':
                 snake.getBody().get(0)[0] -= 1;
                 break;
-            case "R":
+            case 'R':
                 snake.getBody().get(0)[1] += 1;
                 break;
-            case "D":
+            case 'D':
                 snake.getBody().get(0)[0] += 1;
                 break;
-            case "L":
+            case 'L':
                 snake.getBody().get(0)[1] -= 1;
                 break;
             default:
@@ -124,28 +124,28 @@ public class Board extends KeyAdapter {
                 if (snake.getBody().get(0)[0] == 0) {
                     gameOver();
                 } else {
-                    initMove("U");
+                    initMove('U');
                 }
                 break;
             case KeyEvent.VK_LEFT:
                 if (snake.getBody().get(0)[1] == 0) {
                     gameOver();
                 } else {
-                    initMove("L");
+                    initMove('L');
                 }
                 break;
             case KeyEvent.VK_DOWN:
                 if (snake.getBody().get(0)[0] == 19) {
                     gameOver();
                 } else {
-                    initMove("D");
+                    initMove('D');
                 }
                 break;
             case KeyEvent.VK_RIGHT:
                 if (snake.getBody().get(0)[1] == 19) {
                     gameOver();
                 } else {
-                    initMove("R");
+                    initMove('R');
                 }
                 break;
             default:
@@ -156,8 +156,6 @@ public class Board extends KeyAdapter {
             printArray();
         }
     }
-
-
 
     void playGame() {
         addApple(6, 6);
