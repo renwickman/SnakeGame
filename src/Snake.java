@@ -90,4 +90,5 @@ public class Snake {
     public ArrayList<int[]> getBody(){
         return body;
     }
+
 }
