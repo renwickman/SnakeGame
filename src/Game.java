@@ -61,9 +61,7 @@ class SnakePanel extends JPanel {
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         int[][] array = new int[20][20];
-        for (int x = 0;
-             x < array.length * widthOfBox;
-             x += heightOfBox) {
+        for (int x = 0; x < array.length * widthOfBox; x += heightOfBox) {
             for (int y = 0;
                  y < array[0].length * heightOfBox;
                  y += heightOfBox) {
