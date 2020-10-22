@@ -13,8 +13,10 @@ public class Game{
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         window.setSize(700, 700);
-        JPanel panel = new SnakePanel();
+        JPanel panel = new GridPanel();
+        //JPanel panel1 = new SnakePanel();
         window.add(panel);
+        //window.add(panel1);
         window.validate();
         window.repaint();
 
@@ -51,7 +53,7 @@ public class Game{
 
 }
 
-class SnakePanel extends JPanel {
+class GridPanel extends JPanel {
 
     static final int widthOfBox = 30;
     static final int heightOfBox = 30;
@@ -68,5 +70,12 @@ class SnakePanel extends JPanel {
                 graphics.drawRect(x, y, widthOfBox, heightOfBox);
             }
         }
+    }
+}
+
+class SnakePanel extends JPanel{
+    public void paintComponent(Graphics graphics){
+        super.paintComponent(graphics);
+        graphics.setColor(Color.red);
     }
 }
