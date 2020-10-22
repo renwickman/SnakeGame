@@ -1,20 +1,25 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
 
-public class Game extends JPanel {
-    public static void main(String[] args) throws IOException {
+public class Game{
+
+    public static void main(String[] args){
+
+
         JFrame window = new JFrame("Snake Game");
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // kills the program when the red 'X' on the top-right is clicked
-        window.setLayout(new GridBagLayout());
-        window.pack();
-        window.setSize(500, 500);
-        window.setLocationRelativeTo(null); // centers the window to the middle of the screen
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
+        window.setSize(700, 700);
+        JPanel panel = new SnakePanel();
+        window.add(panel);
+        window.validate();
         window.repaint();
+
+
+
 
 
         Scanner in = new Scanner(System.in);
@@ -26,24 +31,44 @@ public class Game extends JPanel {
             window.removeKeyListener(board);
             boolean isValid = false;
             do {
-                System.out.println("Try Again?");
-                switch (in.next().toUpperCase()){
-                    case "Y":
+                System.out.print("Try Again (Y/N)? ");
+                switch (in.nextLine().toUpperCase().charAt(0)) {
+                    case 'Y':
                         isValid = true;
                         isDone = false;
                         break;
-                    case "N":
+                    case 'N':
                         isValid = true;
                         isDone = true;
                         break;
                     default:
                         System.out.println("Not a valid response, but nice try though");
                         isValid = false;
-                        break;
                 }
             } while (!isValid);
         } while (!isDone);
-        window.dispose();
     }
 
+}
+
+class SnakePanel extends JPanel {
+
+    static final int widthOfBox = 30;
+    static final int heightOfBox = 30;
+//    static final int UNIT_SIZE = 20;
+
+    @Override
+    public void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+        int[][] array = new int[20][20];
+        for (int x = 0;
+             x < array.length * widthOfBox;
+             x += heightOfBox) {
+            for (int y = 0;
+                 y < array[0].length * heightOfBox;
+                 y += heightOfBox) {
+                graphics.drawRect(x, y, widthOfBox, heightOfBox);
+            }
+        }
+    }
 }
