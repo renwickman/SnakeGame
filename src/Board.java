@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -7,35 +9,88 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-public class Board extends KeyAdapter implements ActionListener {
+public class Board extends JPanel implements ActionListener {
     private boolean isDead = false;
     private final Snake snake;
     private int[] apple;
     private final int[] dimensions = new int[]{20, 20};
     private final Score score;
-    private String[][] thisBoard;
+    private String[][] thisBoard = new String[dimensions[0]][dimensions[1]];
 
-    public boolean isDead() {
-        return isDead;
-    }
-
-    public void setDead(boolean dead) {
-        isDead = dead;
-    }
-
-    public Snake getSnake() {
-        return snake;
-    }
-
-    public String[][] getThisBoard() {
-        return thisBoard;
-    }
+    //GUI VARIABLES
+    private JFrame window;
+    private static final int WIDTH =637;
+    private static final int HEIGHT =660;
+    private static final int BOXSIZE = 31;
+    Timer timer;
+//    static final int UNIT_SIZE = 20;
 
     public Board() {
         snake = new Snake(4, 4);
         isDead = false;
         score = new Score(0);
+
     }
+
+    //Code for Window and panel:
+    public void generateWindow(){
+        window = new JFrame("Snake Game");
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setVisible(true);
+        window.setSize(WIDTH, HEIGHT);
+        window.setResizable(false);
+        window.add(this);
+        window.addKeyListener(new SnakeKeyListener());
+        window.validate();
+        window.repaint();
+        timer = new Timer(85, this);
+        timer.start();
+    }
+
+
+    //DRAWS GRAPHICS ON THE GUI
+    @Override
+    public void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+        String[][] array = thisBoard;
+
+        //CREATE GRID ON BOARD
+//        for (int x = 0; x < array.length * BOXSIZE; x += BOXSIZE) {
+//            for (int y = 0; y < array[0].length * BOXSIZE; y += BOXSIZE) {
+//                graphics.drawRect(x, y, BOXSIZE, BOXSIZE);
+//            }
+//        }
+
+        //DRAW SCOREBOARD
+        graphics.setFont(graphics.getFont().deriveFont(30.0f));
+        graphics.setColor(Color.BLACK);
+        graphics.drawString("Score: " + score.getScore(),8 * BOXSIZE, 20 * BOXSIZE);
+
+        //GENERATE APPLE
+        graphics.setColor(Color.orange);
+        graphics.fillOval((apple[1] * BOXSIZE),(apple[0] * BOXSIZE),BOXSIZE,BOXSIZE);
+
+        //GENERATE SNAKE PARTS
+        for(int i = 0; i < snake.getBody().size(); i++){
+            graphics.setColor(Color.PINK);
+            graphics.fillOval(snake.getBody().get(i)[1] * BOXSIZE,snake.getBody().get(i)[0] * BOXSIZE,BOXSIZE,BOXSIZE);
+        }
+
+        //GAME OVER GRAPHICS
+        if(isDead){
+            graphics.setColor(Color.PINK);
+            graphics.drawString("GAME OVER",(thisBoard.length/2) * BOXSIZE,(thisBoard[0].length/2) * BOXSIZE);
+        }
+
+    }
+
+
+    //Getter used to close window in Game.java
+    public JFrame getWindow() {
+        return window;
+    }
+
+
 
     public void printArray() {
         System.out.println("Score: " + score.getScore());
@@ -82,6 +137,7 @@ public class Board extends KeyAdapter implements ActionListener {
         }
     }
 
+
     public void gameOver() {
         isDead = true;
         System.out.println("Game Over!");
@@ -111,6 +167,17 @@ public class Board extends KeyAdapter implements ActionListener {
             Random rand = new Random();
             while (!setApple(rand.nextInt(20), rand.nextInt(20))) {}
             score.setScore(score.getScore() + 1);
+            repaint();//Redraw apple on game board
+        }
+    }
+
+    public void snakeCollision(){
+        int[] snakeHead = snake.getBody().get(0);
+        for(int i = 1; i < snake.getBody().size(); i++){
+            if (snakeHead[0] == snake.getBody().get(i)[0] &&
+            snakeHead[1] == snake.getBody().get(i)[1]){
+                gameOver();
+            }
         }
     }
 
@@ -152,18 +219,68 @@ public class Board extends KeyAdapter implements ActionListener {
             appleEaten();
             printArray();
         }
+        snakeCollision();
     }
 
     void playGame() {
         setApple(6, 6);
         printArray();
+        //Generating a new window
+        generateWindow();
         do {
             System.out.print("");
+            repaint();
         } while (!isDead);
+        repaint(); //in order to show game over graphic
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
     }
+
+    //Made as inner class so we can still access Board variables
+    class SnakeKeyListener extends KeyAdapter {
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_UP:
+                    if (snake.getBody().get(0)[0] == 0) {
+                        gameOver();
+                    } else {
+                        initMove('U');
+                    }
+                    break;
+                case KeyEvent.VK_LEFT:
+                    if (snake.getBody().get(0)[1] == 0) {
+                        gameOver();
+                    } else {
+                        initMove('L');
+                    }
+                    break;
+                case KeyEvent.VK_DOWN:
+                    if (snake.getBody().get(0)[0] == 19) {
+                        gameOver();
+                    } else {
+                        initMove('D');
+                    }
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    if (snake.getBody().get(0)[1] == 19) {
+                        gameOver();
+                    } else {
+                        initMove('R');
+                    }
+                    break;
+                default:
+                    System.out.println("?");
+            }
+            if (!isDead) {
+                appleEaten();
+                printArray();
+            }
+        }
+    }
+
 }
