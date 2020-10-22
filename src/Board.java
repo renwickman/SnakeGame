@@ -21,7 +21,7 @@ public class Board extends JPanel implements ActionListener {
     private JFrame window;
     private static final int WIDTH =637;
     private static final int HEIGHT =660;
-    private static final int BOXSIZE = 31;
+    private static final int BOX_SIZE = 31;
     Timer timer;
 //    static final int UNIT_SIZE = 20;
 
@@ -64,22 +64,22 @@ public class Board extends JPanel implements ActionListener {
         //DRAW SCOREBOARD
         graphics.setFont(graphics.getFont().deriveFont(30.0f));
         graphics.setColor(Color.BLACK);
-        graphics.drawString("Score: " + score.getScore(),8 * BOXSIZE, 20 * BOXSIZE);
+        graphics.drawString("Score: " + score.getScore(),8 * BOX_SIZE, 20 * BOX_SIZE);
 
         //GENERATE APPLE
         graphics.setColor(Color.red);
-        graphics.fillOval((apple[1] * BOXSIZE),(apple[0] * BOXSIZE),BOXSIZE,BOXSIZE);
+        graphics.fillOval((apple[1] * BOX_SIZE),(apple[0] * BOX_SIZE), BOX_SIZE, BOX_SIZE);
 
         //GENERATE SNAKE PARTS
         for(int i = 0; i < snake.getBody().size(); i++){
             graphics.setColor(Color.GREEN);
-            graphics.fillOval(snake.getBody().get(i)[1] * BOXSIZE,snake.getBody().get(i)[0] * BOXSIZE,BOXSIZE,BOXSIZE);
+            graphics.fillOval(snake.getBody().get(i)[1] * BOX_SIZE,snake.getBody().get(i)[0] * BOX_SIZE, BOX_SIZE, BOX_SIZE);
         }
 
         //GAME OVER GRAPHICS
         if(isDead){
             graphics.setColor(Color.RED);
-            graphics.drawString("GAME OVER",(thisBoard.length/2) * BOXSIZE,(thisBoard[0].length/2) * BOXSIZE);
+            graphics.drawString("GAME OVER",(thisBoard.length/2) * BOX_SIZE,(thisBoard[0].length/2) * BOX_SIZE);
         }
 
     }
