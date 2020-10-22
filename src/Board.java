@@ -43,7 +43,7 @@ public class Board extends JPanel implements ActionListener {
         window.addKeyListener(new SnakeKeyListener());
         window.validate();
         window.repaint();
-        timer = new Timer(85, this);
+        timer = new Timer(300, this);
         timer.start();
     }
 
@@ -67,18 +67,18 @@ public class Board extends JPanel implements ActionListener {
         graphics.drawString("Score: " + score.getScore(),8 * BOXSIZE, 20 * BOXSIZE);
 
         //GENERATE APPLE
-        graphics.setColor(Color.orange);
+        graphics.setColor(Color.red);
         graphics.fillOval((apple[1] * BOXSIZE),(apple[0] * BOXSIZE),BOXSIZE,BOXSIZE);
 
         //GENERATE SNAKE PARTS
         for(int i = 0; i < snake.getBody().size(); i++){
-            graphics.setColor(Color.PINK);
+            graphics.setColor(Color.GREEN);
             graphics.fillOval(snake.getBody().get(i)[1] * BOXSIZE,snake.getBody().get(i)[0] * BOXSIZE,BOXSIZE,BOXSIZE);
         }
 
         //GAME OVER GRAPHICS
         if(isDead){
-            graphics.setColor(Color.PINK);
+            graphics.setColor(Color.RED);
             graphics.drawString("GAME OVER",(thisBoard.length/2) * BOXSIZE,(thisBoard[0].length/2) * BOXSIZE);
         }
 
@@ -181,46 +181,6 @@ public class Board extends JPanel implements ActionListener {
         }
     }
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_UP:
-                if (snake.getBody().get(0)[0] == 0) {
-                    gameOver();
-                } else {
-                    initMove('U');
-                }
-                break;
-            case KeyEvent.VK_LEFT:
-                if (snake.getBody().get(0)[1] == 0) {
-                    gameOver();
-                } else {
-                    initMove('L');
-                }
-                break;
-            case KeyEvent.VK_DOWN:
-                if (snake.getBody().get(0)[0] == 19) {
-                    gameOver();
-                } else {
-                    initMove('D');
-                }
-                break;
-            case KeyEvent.VK_RIGHT:
-                if (snake.getBody().get(0)[1] == 19) {
-                    gameOver();
-                } else {
-                    initMove('R');
-                }
-                break;
-            default:
-                System.out.println("?");
-        }
-        if (!isDead) {
-            appleEaten();
-            printArray();
-        }
-        snakeCollision();
-    }
 
     void playGame() {
         setApple(6, 6);
@@ -280,7 +240,7 @@ public class Board extends JPanel implements ActionListener {
                 appleEaten();
                 printArray();
             }
+            snakeCollision();
         }
     }
-
 }
