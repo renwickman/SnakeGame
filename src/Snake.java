@@ -1,4 +1,3 @@
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Snake {
@@ -91,4 +90,7 @@ public class Snake {
         return body;
     }
 
+    public char getDirection() {
+        return direction;
+    }
 }
