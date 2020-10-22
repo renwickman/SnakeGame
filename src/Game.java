@@ -1,24 +1,24 @@
-import java.util.Scanner;
+import javax.swing.*;
 
-public class Game{
+public class Game {
 
-    public static void main(String[] args){
-        Scanner in = new Scanner(System.in);
+    public static void main(String[] args) {
         do {
             Board board = new Board();
             board.playGame();
             boolean isValid = false;
             do {
-                System.out.print("Try Again (Y/N)? ");
-                switch (in.nextLine().toUpperCase().charAt(0)) {
-                    case 'Y':
+                JFrame window = board.getWindow();
+                switch (JOptionPane.showConfirmDialog(window, "Would you like to try again?", "Game Over",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE)) {
+                    case JOptionPane.YES_OPTION:
                         isValid = true;
                         board.getWindow().dispose();
                         break;
-                    case 'N':
+                    case JOptionPane.CLOSED_OPTION:
+                        // Closing the prompt will do the same as clicking No - closed case falls to no case
+                    case JOptionPane.NO_OPTION:
                         System.exit(0);
-                    default:
-                        System.out.println("Not a valid response, but nice try though");
                 }
             } while (!isValid);
         } while (true);
