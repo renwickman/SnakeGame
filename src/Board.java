@@ -207,6 +207,9 @@ public class Board extends JPanel implements ActionListener {
             default:
                 throw new IllegalStateException("Invalid direction");
         }
+        if (snake.getBody().get(0)[0] < 0 || snake.getBody().get(0)[1] < 0 || snake.getBody().get(0)[0] > 19 || snake.getBody().get(0)[1] > 19) {
+            gameOver();
+        }
         if (!isDead) {
             appleEaten();
             printArray();
