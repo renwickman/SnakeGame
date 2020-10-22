@@ -171,6 +171,57 @@ public class Board extends JPanel implements ActionListener {
         }
     }
 
+    public void snakeCollision(){
+        int[] snakeHead = snake.getBody().get(0);
+        for(int i = 1; i < snake.getBody().size(); i++){
+            if (snakeHead[0] == snake.getBody().get(i)[0] &&
+            snakeHead[1] == snake.getBody().get(i)[1]){
+                gameOver();
+            }
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_UP:
+                if (snake.getBody().get(0)[0] == 0) {
+                    gameOver();
+                } else {
+                    initMove('U');
+                }
+                break;
+            case KeyEvent.VK_LEFT:
+                if (snake.getBody().get(0)[1] == 0) {
+                    gameOver();
+                } else {
+                    initMove('L');
+                }
+                break;
+            case KeyEvent.VK_DOWN:
+                if (snake.getBody().get(0)[0] == 19) {
+                    gameOver();
+                } else {
+                    initMove('D');
+                }
+                break;
+            case KeyEvent.VK_RIGHT:
+                if (snake.getBody().get(0)[1] == 19) {
+                    gameOver();
+                } else {
+                    initMove('R');
+                }
+                break;
+            default:
+                System.out.println("?");
+        }
+        if (!isDead) {
+            appleEaten();
+            printArray();
+        }
+        snakeCollision();
+    }
+
     void playGame() {
         setApple(6, 6);
         printArray();
