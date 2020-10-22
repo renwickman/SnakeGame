@@ -33,6 +33,7 @@ public class Board extends JPanel implements ActionListener {
     //Code for Window and panel:
     public void generateWindow(){
         window = new JFrame("Snake Game");
+        window.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\src\\cartoon.png"));
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         window.setSize(WIDTH, HEIGHT);
