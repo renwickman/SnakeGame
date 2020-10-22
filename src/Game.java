@@ -1,36 +1,27 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Scanner;
 
-public class Game{
+public class Game {
 
-    public static void main(String[] args){
-        Scanner in = new Scanner(System.in);
-        boolean isDone = false;
+    public static void main(String[] args) {
         do {
             Board board = new Board();
             board.playGame();
             boolean isValid = false;
             do {
-                System.out.print("Try Again (Y/N)? ");
-                switch (in.nextLine().toUpperCase().charAt(0)) {
-                    case 'Y':
+                JFrame window = board.getWindow();
+                switch (JOptionPane.showConfirmDialog(window, "Would you like to try again?", "Game Over",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE)) {
+                    case JOptionPane.YES_OPTION:
                         isValid = true;
-                        isDone = false;
                         board.getWindow().dispose();
                         break;
-                    case 'N':
-                        isValid = true;
-                        isDone = true;
-                        break;
-                    default:
-                        System.out.println("Not a valid response, but nice try though");
-                        isValid = false;
+                    case JOptionPane.CLOSED_OPTION:
+                        // Closing the prompt will do the same as clicking No - closed case falls to no case
+                    case JOptionPane.NO_OPTION:
+                        System.exit(0);
                 }
             } while (!isValid);
-        } while (!isDone);
+        } while (true);
     }
 
 }

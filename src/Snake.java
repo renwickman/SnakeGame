@@ -1,4 +1,3 @@
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Snake {
@@ -72,16 +71,16 @@ public class Snake {
     public void grow() {
         int[] tail = body.get(body.size() - 1);
         switch (tailDirection) {
-            case 'U':
+            case 'D':
                 body.add(new int[]{tail[0] - 1, tail[1]});
                 break;
-            case 'D':
+            case 'U':
                 body.add(new int[]{tail[0] + 1, tail[1]});
                 break;
-            case 'L':
+            case 'R':
                 body.add(new int[]{tail[0], tail[1] - 1});
                 break;
-            case 'R':
+            case 'L':
                 body.add(new int[]{tail[0], tail[1] + 1});
                 break;
         }
@@ -90,4 +89,5 @@ public class Snake {
     public ArrayList<int[]> getBody(){
         return body;
     }
+
 }
