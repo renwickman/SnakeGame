@@ -1,29 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
 
-public class Game extends JPanel {
-    public static void main(String[] args) throws IOException {
-        JFrame window = new JFrame("Snake Game");
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // kills the program when the red 'X' on the top-right is clicked
-        window.setLayout(new GridBagLayout());
-        window.pack();
-        window.setSize(500, 500);
-        window.setLocationRelativeTo(null); // centers the window to the middle of the screen
-        window.setVisible(true);
-        window.repaint();
+public class Game{
 
-
+    public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         boolean isDone = false;
         do {
             Board board = new Board();
-            window.addKeyListener(board);
             board.playGame();
-            window.removeKeyListener(board);
             boolean isValid = false;
             do {
                 System.out.print("Try Again (Y/N)? ");
@@ -31,6 +19,7 @@ public class Game extends JPanel {
                     case 'Y':
                         isValid = true;
                         isDone = false;
+                        board.getWindow().dispose();
                         break;
                     case 'N':
                         isValid = true;
