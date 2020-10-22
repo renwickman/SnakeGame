@@ -61,11 +61,6 @@ public class Board extends JPanel implements ActionListener {
 //            }
 //        }
 
-        //DRAW SCOREBOARD
-        graphics.setFont(graphics.getFont().deriveFont(30.0f));
-        graphics.setColor(Color.BLACK);
-        graphics.drawString("Score: " + score.getScore(),8 * BOX_SIZE, 20 * BOX_SIZE);
-
         //GENERATE APPLE
         graphics.setColor(Color.red);
         graphics.fillOval((apple[1] * BOX_SIZE),(apple[0] * BOX_SIZE), BOX_SIZE, BOX_SIZE);
@@ -75,6 +70,11 @@ public class Board extends JPanel implements ActionListener {
             graphics.setColor(Color.GREEN);
             graphics.fillOval(snake.getBody().get(i)[1] * BOX_SIZE,snake.getBody().get(i)[0] * BOX_SIZE, BOX_SIZE, BOX_SIZE);
         }
+
+        //DRAW SCOREBOARD
+        graphics.setFont(graphics.getFont().deriveFont(30.0f));
+        graphics.setColor(Color.BLACK);
+        graphics.drawString("Score: " + score.getScore(),8 * BOX_SIZE, 20 * BOX_SIZE);
 
         //GAME OVER GRAPHICS
         if(isDead){
