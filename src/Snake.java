@@ -9,8 +9,8 @@ public class Snake {
         body = new ArrayList<>();
         body.add(new int[]{y, x});
         body.add(new int[]{y - 1, x});
-        direction = 'U';
-        tailDirection = 'U';
+        direction = 'D';
+        tailDirection = 'D';
     }
 
     public void move(int moveY, int moveX) {

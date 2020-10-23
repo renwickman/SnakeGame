@@ -40,9 +40,8 @@ public class Board extends JPanel implements ActionListener {
         window.setResizable(false);
         window.add(this);
         window.addKeyListener(new SnakeKeyListener());
-        window.validate();
-        window.repaint();
-        timer = new Timer(300, this);
+        window.setLocationRelativeTo(null);
+        timer = new Timer(250, this);
         timer.start();
     }
 
